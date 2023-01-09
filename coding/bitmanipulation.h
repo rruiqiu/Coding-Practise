@@ -9,3 +9,5 @@ int flipbits_findlongest_seq(int num);
 void nextnumber(unsigned int num);
 void decimaltobinary(unsigned int num);
 int count1s(unsigned int num);
+int conversion(int A, int B);
+int pairwiseSwap(int num);

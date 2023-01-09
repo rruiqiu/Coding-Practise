@@ -105,10 +105,87 @@ void nextnumber(unsigned int num) {
     decimaltobinary(num);
     while (wanted != count1s(--temp));
     decimaltobinary(temp);
-    
+    //bit manipulatio method look from textbook; find non-trailing those methods
+}
 
+int conversion(int A, int B) { //the number of bits need to convert
+    //input 29, 11101 , 15, 01111
+    //output 2
+    //brutal force. check one by one?, if not differ than count ++
+    //1001011
+    //0000111
+    //output: 3
+    //O(b) time;
+    //int count = 0;
+    //int bigger,smaller;
+    //if (A > B) {
+    //     bigger = A;
+    //     smaller = B;
+    //}
+    //else {
+    //     bigger = B;
+    //     smaller = A;
+    //}
+    //while (bigger != 0) {
+    //    if ((1 & bigger) != (1 & smaller)){
+    //        count++;
+    //    }
+    //    bigger = bigger >> 1;
+    //    smaller = smaller >> 1;
+    //} 
+    //return count;
+    //Think about what an XOR indicates. If you do a XOR b, where does the result have 1 s?
+    //Where does it have Os ?
+    //11101
+    //01111
+    //doing xor, will give 10010, then find out how many zeros have
+    //int count = 0;
+    //for (int c = A^B; c != 0; c = c >> 1) {
+    //    count += c & 1;
+    //}
+    //return count;
+
+    int count = 0;
+    for (int c = A ^ B; c != 0; c = c & (c - 1)) {  //count how long it taks c to reach 0
+    // 10000 -> 01111
+    // 10100 -> 10011
+    // The operation c = c & ( c - 1) will clear the least significant bit in c. 
+        count++;
+    }
+    return count;
 
 }
+
+int pairwiseSwap(int num) {
+    //swap odd and even bits in an integer
+    // 101010
+    // 010101
+    //bit 0 and bit 1 are swapped
+    //operate two bits at a time, temp to record then
+
+    // 11 = 3, extract least significant two bits
+    // 10
+    // 01
+    int swap = 0;
+    int odd = 1;
+    int even = 0;
+    while (num != 0) {
+        int temp = 1 & num; //record the first digit
+        swap = swap | (temp << odd);
+        num = num >> 1;
+        swap = swap | ((num & 1) << even);
+        num = num >> 1;
+        // 1010 -> 
+        //swap = 01;
+        odd = odd + 2;
+        even = even + 2;
+    }
+    return swap;
+}
+
+
+
+
 //helping method
 //used to print the binary form
 void decimaltobinary(unsigned int num) { //print
@@ -135,7 +212,7 @@ void decimaltobinary(unsigned int num) { //print
 
 //count appearance of 1s for the binary forms
 int count1s(unsigned int num) {
-    //
+    // another method is using c & (c-1)
     int count = 0;
     while (num != 0) {
         if ((num & 1) > 0) {
@@ -144,4 +221,13 @@ int count1s(unsigned int num) {
         num = num >> 1;
     }
     return count;
+    //
+    //int count = 0;
+    //for (int c = A ^ B; c != 0; c = c & (c - 1)) {  //count how long it taks c to reach 0
+    //    // 10000 -> 01111
+    //    // 10100 -> 10011
+    //    // The operation c = c & ( c - 1) will clear the least significant bit in c. 
+    //    count++;
+    //}
+    //return count;
 } 

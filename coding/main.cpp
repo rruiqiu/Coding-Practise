@@ -17,7 +17,9 @@ int main()
     //cout << flipbits_findlongest_seq(num);
     //5.4
     //cout << count1s(1775);
-    nextnumber(25);
+    /*nextnumber(25);*/
+   // cout<<conversion(0b1001011, 0b0000111);
+    cout << pairwiseSwap(0b1011);
     //Bs bs;
     //int arr[10] = { 1, 2, 3, 4, 5, 6, 8, 9, 10, 11 };
     //int num = 11;
