@@ -2,7 +2,10 @@
 #include "binaryseach.h"
 #include "bitmanipulation.h"
 
-
+void swapbyval(int a, int b);
+void swapbyref(int* a, int* b);
+//cpp pass by ref
+void cppswapbyref(int& a, int& b);
 int main()
 {
     //bit manipulation test cases
@@ -19,7 +22,7 @@ int main()
     //cout << count1s(1775);
     /*nextnumber(25);*/
    // cout<<conversion(0b1001011, 0b0000111);
-    cout << pairwiseSwap(0b1011);
+    /*cout << pairwiseSwap(0b1011);*/
     //Bs bs;
     //int arr[10] = { 1, 2, 3, 4, 5, 6, 8, 9, 10, 11 };
     //int num = 11;
@@ -46,6 +49,15 @@ int main()
     //}
     //cout<<urlify(data3, length);
     //cout << checkpalindrom(data4);
+    
+    //pointer
+    int a = 2, b = 3;
+    cout <<"before"<< a << b;
+    swapbyval(a, b);
+    cppswapbyref(a, b);
+    cout << "first swap" << a << b;
+    swapbyref(&a, &b);
+    cout << a << b;
     return 0;
 }
 

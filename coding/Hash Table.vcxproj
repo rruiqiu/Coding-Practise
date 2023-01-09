@@ -132,6 +132,7 @@
     <ClCompile Include="hashtable.cpp" />
     <ClCompile Include="binarysearch.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="pointer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="binaryseach.h" />

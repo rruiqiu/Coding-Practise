@@ -166,23 +166,33 @@ int pairwiseSwap(int num) {
     // 11 = 3, extract least significant two bits
     // 10
     // 01
-    int swap = 0;
-    int odd = 1;
-    int even = 0;
-    while (num != 0) {
-        int temp = 1 & num; //record the first digit
-        swap = swap | (temp << odd);
-        num = num >> 1;
-        swap = swap | ((num & 1) << even);
-        num = num >> 1;
-        // 1010 -> 
-        //swap = 01;
-        odd = odd + 2;
-        even = even + 2;
-    }
-    return swap;
+    //int swap = 0;
+    //int odd = 1;
+    //int even = 0;
+    //while (num != 0) {
+    //    int temp = 1 & num; //record the first digit
+    //    swap = swap | (temp << odd);
+    //    num = num >> 1;
+    //    swap = swap | ((num & 1) << even);
+    //    num = num >> 1;
+    //    // 1010 -> 
+    //    //swap = 01;
+    //    odd = odd + 2;
+    //    even = even + 2;
+    //}
+    //return swap;
+    
+    //also another way is to think about maasking with a binary, operate on the odds bits first then even bits
+    // >>> arithmatic shift, not changing the sign, the sign(msb) will still be the same when replaced
+    // >> logical shift, will replace the sign bit with zero
+    // We can mask all odd bits with 10101010 in binary (which is 0xAA), then shift them right by 1 to put them in the even spots.
+    // For the even bits, we do an equivalent operation. Finally, we merge these two values.
+    return (((num & 0xaaaaaaaa) >> 1) | ((num & 0x55555555) << 1));
 }
 
+int drawline() {
+    return 0;
+}
 
 
 

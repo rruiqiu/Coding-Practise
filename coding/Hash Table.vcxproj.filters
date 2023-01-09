@@ -27,6 +27,9 @@
     <ClCompile Include="Bitmanipulation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pointer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hashtable.h">
